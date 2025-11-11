@@ -1,0 +1,620 @@
+
+<!DOCTYPE html>
+<!-- saved from url=(0054)file:///D:/Shella/Web%20Page/profile/index4-black.html -->
+<html lang="id"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shella Lim — CV</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- DataTables -->
+  <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+  <!-- AOS (Animate On Scroll) -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+
+
+  <style>
+    :root{
+      --bg:#ffffff;
+      --glass: rgba(255,255,255,0.04);
+      --panel: rgba(10,16,30,0.6);
+      --neon:#00d1ff; /* electric blue */
+      --accent:#0ea5f5;
+      --muted:#9aa4b2;
+      --white:#474747; /* lighter white for readability */
+      --black:#000000;  
+    }
+    *{box-sizing:border-box}
+    body{background:radial-gradient(ellipse at top right,#ffffff 0%, var(--bg) 45%); color:var(--white); font-family:'Poppins',system-ui,Arial; -webkit-font-smoothing:antialiased;}
+
+    /* NAVBAR */
+    .navbar{backdrop-filter:blur(6px);background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-bottom:1px solid rgba(255,255,255,0.03)}
+    .brand-title{font-family:'Orbitron',sans-serif;letter-spacing:1px;font-weight:700;color:var(--neon)}
+    .navbar .nav-link{color:var(--white);opacity:0.95}
+    .navbar .nav-link:hover{color:var(--neon)}
+
+    /* HERO */
+    .hero{padding:3.5rem 0;position:relative}
+    .hero-card{background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));border:1px solid rgba(14,165,245,0.06);box-shadow:0 10px 40px rgba(2,6,23,0.6);border-radius:18px;padding:1.6rem}
+    .avatar{width:140px;height:140px;border-radius:50%;border:4px solid rgba(0,209,255,0.12);object-fit:cover;box-shadow:0 8px 40px rgba(0,0,0,0.6)}
+    .role{font-family:'Orbitron',sans-serif;color:var(--accent);letter-spacing:0.6px}
+
+    /* badges */
+    .badge-tech{background:linear-gradient(90deg,var(--neon),#0ea5f5);color:#001;box-shadow:0 6px 18px rgba(0,209,255,0.08)}
+
+    /* sections */
+    .section{padding:2rem 0}
+    .section-title{display:flex;align-items:center;gap:12px;margin-bottom:1rem}
+    .section-title h3{font-family:'Orbitron',sans-serif;color:var(--neon);margin:0}
+    .glass{background:linear-gradient(180deg, rgba(250, 248, 248, 0.02), rgba(134, 228, 245, 0.01));color:var(--white);border-radius:12px;padding:1rem;border:1px solid rgb(124 203 249 / 31%)}
+
+    /* cards hover */
+    .card-hover{transition:transform .28s cubic-bezier(.2,.9,.2,1), box-shadow .28s;cursor:default}
+    .card-hover:hover{transform:translateY(-10px) scale(1.01);box-shadow:0 20px 40px rgba(2,6,23,0.7);border-color:rgba(0,209,255,0.12)}
+
+    /* neon link hover */
+    a.neon{color:var(--white)}
+    a.neon:hover{color:var(--neon);text-shadow:0 0 12px rgba(0,209,255,0.18)}
+
+    /* portfolio hover effect */
+    .portfolio-card{overflow:hidden;border-radius:12px;border:1px solid rgb(124 203 249 / 31%)}
+    .portfolio-card img{transition:transform .4s ease;transform-origin:center}
+    .portfolio-card:hover img{transform:scale(1.08) translateY(-6px)}
+
+    /* buttons */
+    .btn-accent{background:linear-gradient(90deg,var(--neon),#0ea5f5);color:#001;border:none}
+    .btn-outline-accent{border:1px solid rgba(14,165,245,0.12);color:var(--white);background:transparent}
+
+    /* progress */
+    .progress{height:12px;background:rgba(255,255,255,0.04);border-radius:999px}
+    .progress-bar{background:linear-gradient(90deg,var(--neon),#0ea5f5);color:var(--bg)}
+
+    /* table styles */
+    table.dataTable thead th{color:var(--white);border-bottom:1px solid rgba(255,255,255,0.06)}
+    table.dataTable tbody td{color:var(--white);}
+
+    /* footer */
+    footer{padding:2rem 0;color:var(--muted);text-align:center}
+
+    /* responsive tweaks */
+    @media (max-width:768px){ .hero{padding:2rem 0} .avatar{width:110px;height:110px} }
+  </style>
+</head>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg sticky-top">
+  <div class="container">
+    <a class="navbar-brand brand-title" href="#">SHELLA</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto align-items-lg-center">
+        <li class="nav-item"><a class="nav-link neon" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link neon" href="#experience">Experience</a></li>
+        <li class="nav-item"><a class="nav-link neon" href="#skills">Skills</a></li>
+        <li class="nav-item"><a class="nav-link neon" href="#education">Education</a></li>
+        <li class="nav-item"><a class="nav-link neon" href="#portfolio">Portfolio</a></li>
+        <li class="nav-item"><a class="nav-link neon" href="#contact">Contact</a></li>
+        <li class="nav-item ms-3"><button id="downloadBtn" class="btn btn-accent btn-sm">Download CV</button></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="container">
+    <div class="hero-card d-flex gap-4 align-items-center">
+      <div data-aos="fade-right"><img class="avatar" src="https://shorturl.at/kBlKl" alt="Shella Lim"></div> <!-- https://i.pravatar.cc/300?img=5 -->
+      <div class="flex-grow-1" data-aos="fade-up">
+        <h2 class="mb-1" style="font-family:'Orbitron',sans-serif;color:var(--white)">Shella Lim</h2>
+        <div class="role mb-2">Senior Digital Touchpoint Supervisor · Software Engineer · Team Leader</div>
+        <p class="mb-2" style="color:var(--muted)">Batam, Kepulauan Riau · </p>
+        <div class="d-flex gap-2">
+          <span class="badge badge-tech">Innovation</span>
+          <span class="badge bg-dark">Leadership</span>
+          <span class="badge bg-secondary">Full-Stack</span>
+        </div>
+      </div>
+      <div class="text-end d-none d-md-block" data-aos="fade-left">
+        <div class="glass p-3" style="min-width:210px;color:var(--white)">
+          <h6 class="mb-1">Contact</h6>
+          <small class="d-block">Email: <a class="neon" href="mailto:shellalim@gmail.com">shellalim@gmail.com</a></small>
+          <small class="d-block">Phone: <span class="text-muted">+62 812 6347 1998</span></small>
+          <div class="mt-3 d-grid"><a href="#contact" class="btn btn-outline-accent btn-sm">Let's talk</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+  <!-- ABOUT -->
+  <section id="about" class="section" data-aos="fade-up">
+    <div class="section-title"><h3>About</h3></div>
+    <div class="row g-4">
+      <div class="col-lg-6">
+        <div class="glass card-hover p-4">
+          <p>Hello! I'm Shella Lim, a passionate Senior Digital Touchpoint Supervisor with expertise in system development, process optimization, and software engineering. I specialize in leading teams, delivering reliable software solutions, and improving digital reporting systems through continuous innovation and collaboration.</p>
+           <p>Experienced in full-stack development, data analysis, and business process transformation, I aim to bridge the gap between IT and business operations. My background covers leadership, mentoring, and managing development projects across time zones to ensure performance excellence and system sustainability.</p>
+          <div class="mt-3 d-flex flex-wrap gap-2">
+            <span class="badge bg-success">Problem Solver</span>
+            <span class="badge bg-secondary">Cross-Functional</span>
+            <span class="badge bg-info">Product Thinking</span>
+            <span class="badge bg-primary">Leadership</span>
+            <span class="badge bg-dark">.NET</span>
+            <span class="badge bg-secondary">Team Development</span>
+            <span class="badge bg-info text-dark">System Enhancement</span>
+          </div>
+        </div>
+      </div>
+    
+      <aside class="col-lg-6" data-aos="fade-up">
+        <div class="glass p-4 card-hover h-100">
+          <h5 class="text-primary fw-bold mb-3">Highlights</h5>
+          <ul class="small text-muted mb-4">
+            <li>Led an 8-member team to deliver large-scale digital transformation projects across <strong>Cladtek companies in 3 countries</strong>.</li>
+            <li>Reduced inspection time by <strong>over 40%</strong> through process automation and data-driven optimization.</li>
+            <li>Implemented an end-to-end <strong>ETL pipeline</strong> to unify performance and production reporting across global sites.</li>
+            <li>Maintained and enhanced <strong>manufacturing</strong> and <strong>quality control systems</strong> for improved reliability and traceability.</li>
+            <li>Developed and standardized <strong>enterprise reporting frameworks</strong> to support multi-site operations and management insights.</li>
+          </ul>
+
+          <h5 class="text-primary fw-bold mb-2">Availability</h5>
+          <div class="d-flex flex-wrap gap-2">
+            <span class="badge bg-success">Open to Private Project</span>
+            <span class="badge bg-secondary">Remote</span>
+            <span class="badge bg-dark">Multi-site Systems</span>
+            <span class="badge bg-info text-dark">Manufacturing & Reporting</span>
+          </div>
+        </div>
+      </aside>
+
+    </div>
+  </section>
+
+  
+   <!-- EXPERIENCE -->
+  <section id="experience" class="section" data-aos="fade-up">
+    <div class="section-title"><h3>Experience</h3></div>
+
+    <div class="row g-4">
+      
+      <div class="col-md-6">
+        <div class="glass card-hover p-4 h-100">
+          <h5 class="text-primary fw-bold mb-1">Senior Digital Touchpoint Supervisor</h5>
+          <h6 class="text-muted mb-3">Cladtek | Apr 2025 – Present</h6>
+          <p>
+            Overseeing digital transformation across multiple sites and ensuring alignment between operational and system workflows. 
+            Leads a cross-functional team of developers and analysts to deliver automation projects in inspection and production systems. 
+            Implements new process frameworks to improve system reliability and user experience across global regions.
+          </p>
+          <div class="mt-2 d-flex flex-wrap gap-2">
+            <span class="badge bg-dark">Leadership</span>
+            <span class="badge bg-info text-dark">Digitalization</span>
+            <span class="badge bg-primary">Continuous Improvement</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="glass card-hover p-4 h-100">
+          <h5 class="text-primary fw-bold mb-1">Digital Touchpoint Supervisor</h5>
+          <h6 class="text-muted mb-3">Cladtek | Feb 2024 – Apr 2025</h6>
+          <p>
+            Supervised day-to-day development and maintenance of digital systems across manufacturing and inspection departments. 
+            Coordinated cross-department collaboration for data accuracy and ensured on-time delivery of reporting modules. 
+            Actively provided mentoring and UAT sessions to enhance system usability and efficiency.
+          </p>
+          <div class="mt-2 d-flex flex-wrap gap-2">
+            <span class="badge bg-success">System Operations</span>
+            <span class="badge bg-secondary">Team Management</span>
+            <span class="badge bg-dark">Training & UAT</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="glass card-hover p-4 h-100">
+          <h5 class="text-primary fw-bold mb-1">Senior IT Business Analyst</h5>
+          <h6 class="text-muted mb-3">Cladtek | Dec 2023 – Feb 2024</h6>
+          <p>
+            Collaborated with business stakeholders to define and refine requirements for system enhancements. 
+            Created detailed process documentation and helped design workflow integrations between inspection and production reporting systems. 
+            Supported testing and user acceptance phases to ensure system readiness.
+          </p>
+          <div class="mt-2 d-flex flex-wrap gap-2">
+            <span class="badge bg-warning text-dark">Requirement Gathering</span>
+            <span class="badge bg-dark">Process Analysis</span>
+            <span class="badge bg-info text-dark">Documentation</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="glass card-hover p-4 h-100">
+          <h5 class="text-primary fw-bold mb-1">Senior System Development Programmer</h5>
+          <h6 class="text-muted mb-3">Cladtek | Aug 2019 – Dec 2023</h6>
+          <p>
+            Developed and maintained enterprise-level systems to support production workflows using C# and SQL Server.
+            Collaborated with cross-department teams to integrate APIs, automate reporting, and enhance digital tools across the organization.
+            Contributed to business process optimization through structured software engineering practices.
+          </p>
+          <div class="mt-2 d-flex flex-wrap gap-2">
+            <span class="badge bg-dark">.NET Framework</span>
+            <span class="badge bg-info text-dark">API Integration</span>
+            <span class="badge bg-primary">System Architecture</span>
+            <span class="badge bg-secondary">SQL Server</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="glass card-hover p-4 h-100">
+          <h5 class="text-primary fw-bold mb-1">Web Developer</h5>
+          <h6 class="text-muted mb-3">PT Buana Kebenaran Informatika | Feb 2019 – Jun 2019</h6>
+          <p>
+            Designed and developed responsive web-based systems using PHP and MySQL. 
+            Collaborated with the project team to deliver customized modules for enterprise clients. 
+            Improved system security and optimized database queries to enhance overall application performance.
+          </p>
+          <div class="mt-2 d-flex flex-wrap gap-2">
+            <span class="badge bg-primary">PHP Code Igniter</span>
+            <span class="badge bg-secondary">MySQL</span>
+            <span class="badge bg-dark">UI/UX</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="glass card-hover p-4 h-100">
+          <h5 class="text-primary fw-bold mb-1">Junior Programmer</h5>
+          <h6 class="text-muted mb-3">PT Kuadran Teknologi Indonesia | Mar 2018 – Jul 2018</h6>
+          <p>
+            Assisted in backend and frontend development tasks for small-scale business systems. 
+            Debugged issues, tested new modules, and deployed updates under supervision of senior developers. 
+            Gained experience in C#, SQL, and early-stage application lifecycle management.
+          </p>
+          <div class="mt-2 d-flex flex-wrap gap-2">
+            <span class="badge bg-dark">C#</span>
+            <span class="badge bg-success">Testing</span>
+            <span class="badge bg-secondary">Support</span>
+            <span class="badge bg-primary">Dekstop App</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="glass card-hover p-4 h-100">
+          <h5 class="text-primary fw-bold mb-1">Human Resources Administrator</h5>
+          <h6 class="text-muted mb-3">PT Truckindo Batam | Sep 2016 – Mar 2018</h6>
+          <p>
+            Maintained HR databases, organized employee documentation, and supported recruitment logistics. 
+            Developed administrative systems to streamline data entry before transitioning to IT development. 
+            This role strengthened organizational discipline and attention to detail.
+          </p>
+          <div class="mt-2 d-flex flex-wrap gap-2">
+            <span class="badge bg-secondary">HR Administration</span>
+            <span class="badge bg-info text-dark">Data Entry</span>
+            <span class="badge bg-dark">Organization</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+ 
+  <!-- SKILLS -->
+  <section id="skills" class="section" data-aos="fade-up">
+    <div class="section-title"><h3>Skills</h3></div>
+    <div class="glass p-4 card-hover">
+      <div class="row g-3">
+        <div class="col-md-6">
+          <label class="small text-muted">.NET / C#</label>
+          <div class="progress mb-2"><div class="progress-bar" style="width:90%">90%</div></div>
+
+          <label class="small text-muted">SQL / EF</label>
+          <div class="progress mb-2"><div class="progress-bar" style="width:85%">85%</div></div>
+
+          <label class="small text-muted">Crystal Report</label>
+          <div class="progress mb-2"><div class="progress-bar" style="width:85%">85%</div></div>
+
+          <label class="small text-muted">Leadership</label>
+          <div class="progress mb-2"><div class="progress-bar" style="width:95%">95%</div></div>
+        </div>
+
+        <div class="col-md-6">
+          <label class="small text-muted">DevOps / CI-CD</label>
+          <div class="progress mb-2"><div class="progress-bar" style="width:75%">75%</div></div>
+
+          <label class="small text-muted">API Design</label>
+          <div class="progress mb-2"><div class="progress-bar" style="width:78%">78%</div></div>
+
+          <label class="small text-muted">Testing & QA</label>
+          <div class="progress mb-2"><div class="progress-bar" style="width:82%">82%</div></div>
+
+          <label class="small text-muted">SDLC</label>
+          <div class="progress mb-2"><div class="progress-bar" style="width:89%">89%</div></div>
+        </div>
+      </div>
+      <div class="mt-3">
+        <span class="badge bg-dark">System Design</span>
+        <span class="badge bg-dark">Product Strategy</span>
+        <span class="badge bg-dark">Mentorship</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION --><section id="education" class="section" data-aos="fade-up">
+  <div class="section-title"><h3>Education</h3></div>
+  <div class="glass p-3 card-hover">
+    <table id="eduTable" class="table table-borderless table-striped" style="width:100%">
+      <thead class="text-muted">
+        <tr>
+          <th>Year</th>
+          <th>Institution</th>
+          <th>Degree</th>
+          <th>Major</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>2016 - 2019</td>
+          <td>Putera Batam University</td>
+          <td>Bachelor of Technology</td>
+          <td>Information Technology</td>
+        </tr>
+        <tr>
+          <td>2013 - 2016</td>
+          <td>Immanuel Christian Senior High School</td>
+          <td>High School Diploma</td>
+          <td>Science</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+  <!-- PORTFOLIO -->
+  <section id="portfolio" class="section" data-aos="fade-up">
+    <div class="section-title"><h3>Portfolio</h3></div>
+    <div class="row g-3">
+      <!-- dummy tech projects -->
+      <div class="col-md-4">
+        <div class="portfolio-card card-hover glass p-0">
+          <img src="https://picsum.photos/600/350?random=21" class="w-100" alt="proj1">
+          <div class="p-3">
+            <h6 style="color:var(--white)">Inspection Automation</h6>
+            <p class="small text-muted">Project · 2024</p>
+            <div><span class="badge bg-primary">Backend</span> <span class="badge bg-dark">Integration</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="portfolio-card card-hover glass p-0">
+          <img src="https://picsum.photos/600/350?random=22" class="w-100" alt="proj2">
+          <div class="p-3">
+            <h6 style="color:var(--white)">Realtime Dashboard</h6>
+            <p class="small text-muted">Project · 2023</p>
+            <div><span class="badge bg-primary">Frontend</span> <span class="badge bg-dark">Visualization</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="portfolio-card card-hover glass p-0">
+          <img src="https://picsum.photos/600/350?random=23" class="w-100" alt="proj3">
+          <div class="p-3">
+            <h6 style="color:var(--white)">API Optimization</h6>
+            <p class="small text-muted">Project · 2022</p>
+            <div><span class="badge bg-primary">Performance</span> <span class="badge bg-dark">API</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DATATABLE: Certifications/Projects -->
+  <section class="section" data-aos="fade-up">
+  <div class="section-title"><h3>Certifications & Projects</h3></div>
+  <div class="glass p-3 card-hover">
+    <table id="projectsTable" class="table table-hover align-middle" style="width:100%">
+      <thead class="text-muted">
+        <tr>
+          <th>Title</th>
+          <th>Type</th>
+          <th>Issued By</th>
+          <th>Year</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- 🔹 Projects -->
+        <tr>
+          <td><strong>Inspection Automation</strong></td>
+          <td>Project</td>
+          <td>Cladtek</td>
+          <td>2024</td>
+          <td>Integration with automated reporting and inspection workflow systems.</td>
+        </tr>
+        <tr>
+          <td><strong>Realtime Dashboard</strong></td>
+          <td>Project</td>
+          <td>Cladtek</td>
+          <td>2023</td>
+          <td>Developed live performance dashboards for management monitoring.</td>
+        </tr>
+        <tr>
+          <td><strong>Certified Scrum</strong></td>
+          <td>Certification</td>
+          <td>Scrum.org</td>
+          <td>2021</td>
+          <td>Demonstrated agile leadership and sprint management skills.</td>
+        </tr>
+
+        <!-- 🔹 Dicoding Certificates -->
+        <tr>
+          <td>
+            <strong>Belajar Membuat Aplikasi Flutter untuk Pemula</strong>
+          </td>
+          <td>Certification</td>
+          <td>Dicoding Indonesia</td>
+          <td>2021</td>
+          <td>
+            Credential ID: <code>MEPJLLGLJZ3V</code><br>
+            <small>Valid until Jul 2024</small><br>
+            <a href="https://www.dicoding.com/certificates/MEPJLLGLJZ3V" target="_blank" class="link-primary">View Credential</a>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <strong>Belajar Prinsip Pemrograman SOLID</strong>
+          </td>
+          <td>Certification</td>
+          <td>Dicoding Indonesia</td>
+          <td>2021</td>
+          <td>
+            Credential ID: <code>KEXL4KRR4XG2</code><br>
+            <small>Valid until Jun 2024</small><br>
+            <a href="https://www.dicoding.com/certificates/KEXL4KRR4XG2" target="_blank" class="link-primary">View Credential</a>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <strong>Memulai Pemrograman Dengan Dart</strong>
+          </td>
+          <td>Certification</td>
+          <td>Dicoding Indonesia</td>
+          <td>2021</td>
+          <td>
+            Credential ID: <code>JLX11OG6NX72</code><br>
+            <small>Valid until Jun 2024</small><br>
+            <a href="https://www.dicoding.com/certificates/JLX11OG6NX72" target="_blank" class="link-primary">View Credential</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  </section>
+
+
+  <!-- CONTACT -->
+  <section id="contact" class="section" data-aos="fade-up">
+    <div class="section-title"><h3>Contact</h3></div>
+    <div class="glass p-3 card-hover">
+      <form id="contactForm">
+        <div class="row g-3">
+          <div class="col-md-6 form-floating">
+            <input class="form-control" id="name" placeholder=" ---Name---">
+            <label for="name">Name</label>
+          </div>
+          <div class="col-md-6 form-floating">
+            <input class="form-control" id="email" placeholder=" ---Email---">
+            <label for="email">Email</label>
+          </div>
+          <div class="col-12 form-floating">
+            <textarea class="form-control" id="message" placeholder=" ---Order---" style="height:120px"></textarea>
+            <label for="message">Order</label>
+          </div>
+          <div class="col-12 d-flex gap-2">
+            <button class="btn btn-accent" type="submit"><i class="bi bi-whatsapp"></i> Send via WhatsApp</button>
+            <!-- <button class="btn btn-outline-accent" id="showToast">Show Toast</button> -->
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <p class="mb-0">© 2025 Shella Lim — Built with Bootstrap 5</p>
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+<!-- AOS -->
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<!-- html2canvas & jsPDF for download -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<script>
+  // Init AOS
+  AOS.init({duration:700,once:true,easing:'ease-in-out'});
+
+  // DataTables
+  $(document).ready(function(){
+    $('#eduTable').DataTable({paging:false,searching:false,info:false,autoWidth:false});
+    $('#projectsTable').DataTable({responsive:true,autoWidth:false});
+  });
+
+  // Smooth scroll for nav
+  $('.nav-link').on('click', function(e){
+    var target = $(this).attr('href');
+    if(target && target.startsWith('#')){
+      e.preventDefault();
+      $('html,body').animate({scrollTop: $(target).offset().top - 80},500);
+    }
+  });
+
+  // Contact form submit
+  $('#contactForm').on('submit', function(e) {
+      e.preventDefault();
+      // Ambil nilai dari input
+      const name = $('#name').val().trim();
+      const email = $('#email').val().trim();
+      const message = $('#message').val().trim();
+      // Ganti nomor WA kamu di sini (format internasional tanpa +)
+      const phone = '6281234567890';
+      // Buat isi pesan
+      const text = `Hi Shella, my name is ${name} (%20${email}%20).%0A%0A${message}`;
+      // Encode pesan ke format URL
+      const url = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
+      // Buka link WA di tab baru
+      window.open(url, '_blank');
+  });
+
+  // show toast button
+  $('#showToast').on('click', function(){
+    const tEl = document.createElement('div'); tEl.className='toast align-items-center text-bg-dark border-0 position-fixed bottom-0 end-0 m-3'; tEl.role='alert'; tEl.ariaLive='polite'; tEl.ariaAtomic='true'; tEl.innerHTML='<div class="d-flex"><div class="toast-body">Hello — this is a toast!</div><button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button></div>'; document.body.appendChild(tEl); new bootstrap.Toast(tEl).show();
+  });
+
+  // Download CV (capture full page)
+  document.getElementById('downloadBtn').addEventListener('click', async function(){
+    const btn = this; btn.disabled=true; btn.innerText='Processing...';
+    try{
+      // expand all accordions & ensure visible
+      document.querySelectorAll('.accordion-collapse').forEach(c=>c.classList.add('show'));
+      await new Promise(r=>setTimeout(r,350));
+
+      const element = document.documentElement; // capture entire page
+      const scale = 2; // improve resolution
+      const opts = {scale: scale, useCORS:true, allowTaint:false, logging:false};
+      const canvas = await html2canvas(element, opts);
+      const imgData = canvas.toDataURL('image/jpeg', 0.95);
+      const { jsPDF } = window.jspdf;
+      const pdf = new jsPDF({orientation:'portrait', unit:'px', format:[canvas.width, canvas.height]});
+      pdf.addImage(imgData, 'JPEG', 0, 0, canvas.width, canvas.height);
+      pdf.save('Shella_Lim_CV.pdf');
+    }catch(err){
+      console.error(err); alert('Gagal membuat PDF: '+err.message);
+    }finally{ btn.disabled=false; btn.innerText='Download CV';
+      // collapse back (optional)
+      document.querySelectorAll('.accordion-collapse').forEach(c=>c.classList.remove('show'));
+    }
+  });
+</script>
+</body>
+</html>
