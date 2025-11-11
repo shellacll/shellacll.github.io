@@ -84,6 +84,7 @@
   </style>
 </head>
 
+<body>
 <!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg sticky-top">
   <div class="container">
@@ -109,7 +110,7 @@
 <header class="hero">
   <div class="container">
     <div class="hero-card d-flex gap-4 align-items-center">
-      <div data-aos="fade-right"><img class="avatar" src="https://shorturl.at/kBlKl" alt="Shella Lim"></div> <!-- https://i.pravatar.cc/300?img=5 -->
+      <div data-aos="fade-right"><img class="avatar" src="https://media.licdn.com/dms/image/v2/D5603AQH3ELECVbIygw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1703919536930?e=1764201600&v=beta&t=QMhVBJOCfVro934p7N2XN11u0njKxmob9UFVYfLBHRI" alt="Shella Lim"></div> <!-- https://i.pravatar.cc/300?img=5 -->
       <div class="flex-grow-1" data-aos="fade-up">
         <h2 class="mb-1" style="font-family:'Orbitron',sans-serif;color:var(--white)">Shella Lim</h2>
         <div class="role mb-2">Senior Digital Touchpoint Supervisor · Software Engineer · Team Leader</div>
@@ -590,30 +591,99 @@
   $('#showToast').on('click', function(){
     const tEl = document.createElement('div'); tEl.className='toast align-items-center text-bg-dark border-0 position-fixed bottom-0 end-0 m-3'; tEl.role='alert'; tEl.ariaLive='polite'; tEl.ariaAtomic='true'; tEl.innerHTML='<div class="d-flex"><div class="toast-body">Hello — this is a toast!</div><button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button></div>'; document.body.appendChild(tEl); new bootstrap.Toast(tEl).show();
   });
+ 
+// Download CV (capture full page, exclude navbar)
+document.getElementById('downloadBtn').addEventListener('click', async function() {
+  const btn = this;
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Processing...';
 
-  // Download CV (capture full page)
-  document.getElementById('downloadBtn').addEventListener('click', async function(){
-    const btn = this; btn.disabled=true; btn.innerText='Processing...';
-    try{
-      // expand all accordions & ensure visible
-      document.querySelectorAll('.accordion-collapse').forEach(c=>c.classList.add('show'));
-      await new Promise(r=>setTimeout(r,350));
+  try {
+    // Pastikan semua accordion terbuka
+    document.querySelectorAll('.accordion-collapse').forEach(c => c.classList.add('show'));
+    await new Promise(r => setTimeout(r, 400));
 
-      const element = document.documentElement; // capture entire page
-      const scale = 2; // improve resolution
-      const opts = {scale: scale, useCORS:true, allowTaint:false, logging:false};
-      const canvas = await html2canvas(element, opts);
-      const imgData = canvas.toDataURL('image/jpeg', 0.95);
-      const { jsPDF } = window.jspdf;
-      const pdf = new jsPDF({orientation:'portrait', unit:'px', format:[canvas.width, canvas.height]});
-      pdf.addImage(imgData, 'JPEG', 0, 0, canvas.width, canvas.height);
-      pdf.save('Shella_Lim_CV.pdf');
-    }catch(err){
-      console.error(err); alert('Gagal membuat PDF: '+err.message);
-    }finally{ btn.disabled=false; btn.innerText='Download CV';
-      // collapse back (optional)
-      document.querySelectorAll('.accordion-collapse').forEach(c=>c.classList.remove('show'));
+    // Ambil section mulai dari hero hingga akhir halaman
+    const heroSection = document.querySelector('.hero');
+    let captureTarget;
+
+    if (heroSection) {
+      const wrapper = document.createElement('div');
+      wrapper.style.background = '#ffffff';
+      wrapper.style.fontFamily = 'Poppins, sans-serif';
+
+      let next = heroSection;
+      while (next) {
+        wrapper.appendChild(next.cloneNode(true));
+        next = next.nextElementSibling;
+      }
+
+      captureTarget = wrapper;
+      document.body.appendChild(wrapper);
+    } else {
+      captureTarget = document.body;
     }
+
+    // Scroll otomatis agar semua elemen ter-render
+    await new Promise(async (resolve) => {
+      let totalHeight = document.body.scrollHeight;
+      let current = 0;
+      const step = 300;
+      while (current < totalHeight) {
+        window.scrollTo(0, current);
+        await new Promise(r => setTimeout(r, 150));
+        current += step;
+      }
+      window.scrollTo(0, 0);
+      setTimeout(resolve, 300);
+    });
+
+    // Capture dengan html2canvas
+    const canvas = await html2canvas(captureTarget, {
+      scale: 2,
+      useCORS: true,
+      backgroundColor: '#ffffff',
+      logging: false,
+      windowWidth: document.documentElement.scrollWidth,
+      windowHeight: document.documentElement.scrollHeight
+    });
+
+    const imgData = canvas.toDataURL('image/jpeg', 0.98);
+    const { jsPDF } = window.jspdf;
+    const pdf = new jsPDF('p', 'mm', 'a4');
+
+    // Hitung skala agar sesuai A4
+    const pageWidth = pdf.internal.pageSize.getWidth();
+    const pageHeight = pdf.internal.pageSize.getHeight();
+    const imgWidth = pageWidth;
+    const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+    let position = 0;
+    let heightLeft = imgHeight;
+
+    pdf.addImage(imgData, 'JPEG', 0, position, imgWidth, imgHeight);
+    heightLeft -= pageHeight;
+
+    while (heightLeft > 0) {
+      position -= pageHeight;
+      pdf.addPage();
+      pdf.addImage(imgData, 'JPEG', 0, position, imgWidth, imgHeight);
+      heightLeft -= pageHeight;
+    }
+
+    pdf.save('CV_Shella_Lim.pdf');
+
+    // Bersihkan elemen clone
+    if (heroSection) captureTarget.remove();
+
+  } catch (err) {
+    console.error(err);
+    alert('Gagal membuat PDF: ' + err.message);
+  } finally {
+    btn.disabled = false;
+    btn.innerText = 'Download CV';
+    document.querySelectorAll('.accordion-collapse').forEach(c => c.classList.remove('show'));
+  }
   });
 </script>
 </body>
